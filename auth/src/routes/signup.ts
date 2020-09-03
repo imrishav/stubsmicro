@@ -30,8 +30,6 @@ router.post(
     const user = User.build({ email, password });
     await user.save();
 
-    console.log(user);
-
     //Geenrate web token..
 
     const userJWT = jwt.sign(
@@ -44,8 +42,6 @@ router.post(
     req.session = {
       jwt: userJWT,
     };
-
-    console.log(req.session);
 
     res.status(201).send(user);
   }
